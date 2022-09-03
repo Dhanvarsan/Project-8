@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.wrapper {
+    padding: 80px 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.music-player {
+    text-align: center;
+    width: 100%;
+    max-width: 330px;
+    height: 500px;
+    box-shadow: 0 0 15px #e5e5e5;
+    background: rgba(0, 0, 0, 0.34);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.music-player::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: .8;
+    border-radius: 20px;
+}
+
+.song-name {
+    font-size: 20px;
+    color: #000;
+    position: relative;
+}
+
+.artist-name {
+    font-size: 20px;
+    color: #000;
+    position: relative;
+}
+
+.disk {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    background: url(./song-cover/song-cover-img.webp) no-repeat center center/cover;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    animation: diskRotate 50s linear infinite;
+    animation-play-state: paused;
+}
+
+.disk-rotate {
+    animation-play-state: running;
+}
+
+@keyframes diskRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.song-slider {
+    width: 100%;
+    position: relative;
+}
+
+.song-slider span {
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    top: 20px;
+}
+
+.song-slider span~span {
+    left: unset;
+    right: 0;
+}
+
+.seek-bar {
+    -webkit-appearance: none;
+    height: 2px;
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+    background: rgb(134, 133, 133);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 5px;
+    height: 10px;
+    background: #000;
+    box-shadow: -400px 0 0 400px #000;
+}
+
+.controls button {
+    cursor: pointer;
+    box-shadow: 0 0 0 0 #000;
+    transition: all .5s ease;
+}
+
+.play-btn {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 0 0 5px rgb(120, 120, 120) !important;
+}
+
+.play-btn.pause {
+    box-shadow: 0 0 0 10px rgb(120, 120, 120) !important;
+    transition: all .5s ease;
+}
+
+.play-btn span {
+    position: absolute;
+    top: 3px;
+    left: -10px;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 5px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all .5s ease;
+}
+
+.play-btn span~span {
+    left: 10px;
+}
+
+.play-btn.pause span {
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
+    width: 15px;
+    transition: all .5s ease;
+    left: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+    position: relative;
+}
+
+.controls button:hover {
+    transition: all .5s ease;
+    box-shadow: 0 0 0 2px #000;
+}
+
+.next,
+.prev {
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.next img,
+.prev img {
+    width: 100%;
+    max-width: 20px;
+    position: relative;
+    top: 2px;
+    right: 2px;
+    height: 18px;
+}
+
+.next img {
+    transform: rotate(180deg);
+    right: -2px;
+}
+
+.play-btn.pause span~span {
+    width: 0px;
+    transition: all .5s ease;
+}
